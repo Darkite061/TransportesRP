@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Transporte en Autobús</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./scripts/script.js"></script>
+    <style>
+        /* Estilos para el efecto de zoom en las imágenes al pasar el ratón */
+        .img-zoom {
+            transition: transform 0.3s;
+        }
+
+        .img-zoom:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    
+</head>
+
+    <body>
+    <header>
+        <h1>Transportes RP</h1>
+        <button id="menu-button" title="button" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav id="menu">
+          <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./somos.html">Quienes Somos?</a></li>
+            <li><a href="./contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+    </header>
+     
+    <div class="packages">
+        <!-- Formulario de viaje -->
+        <div class="travel-form">
+            <h2>Reserva tu viaje</h2>
+
+            <!-- Formulario -->
+            <form action="#" method="POST">
+                <label for="origin">Origen:</label>
+                <input type="text" id="origin" name="origin" required><br>
+
+                <label for "destination">Destino:</label>
+                <input type="text" id="destination" name="destination" required><br>
+
+                <label for="departure-date">Fecha de Ida:</label>
+                <input type="date" id="departure-date" name="departure-date" required><br>
+
+                <label for="return-date">Fecha de Regreso:</label>
+                <input type="date" id="return-date" name="return-date" required><br>
+
+                <input type="submit" value="Reservar">
+            </form>
+        </div>
+    </div>
+    <h2>Agendar Destinos</h2>
+    <label for="search">Buscar Destino:</label>
+    <input type="text" id="search" oninput="filterDestinationsBySearch()">
+
+    <div class="filters">
+        <label for="category">Categoría:</label>
+        <select id="category" onchange="filterDestinos()">
+            <option value="all">Todos</option>
+            <option value="beach">Playa</option>
+            <option value="culture">Cultura</option>
+        </select>
+    
+        <label for="type">Tipo:</label>
+        <select id="type" onchange="filterDestinos()">
+            <option value="all">Todos</option>
+            <option value="relax">Relax</option>
+            <option value="adventure">Aventura</option>
+        </select>
+    </div>
+
+        <!-- Lista de destinos -->
+        <div class="container">
+            <div class="card img-zoom cancun" data-category="beach" data-type="relax">
+                <img src="./img/destinos/cancun.jpg" alt="Cancún">
+                <h3>Cancún</h3>
+                <p>Cancún es una ciudad turística en la costa caribeña de México. Es conocida por sus playas, numerosos resorts y vida nocturna. La zona hotelera de Cancún se encuentra en una isla en forma de "7" en el extremo norte de la costa. La ciudad de Cancún se encuentra al oeste de la isla. Juntos, forman una zona turística popular conocida como el Caribe Mexicano.</p>
+                <a href="#">Reservar ahora</a>
+            </div>
+            <div class="card img-zoom tulum" data-category="beach" data-type="adventure">
+                <img src="./img/destinos/tulum.jpg" alt="Tulum" >
+                <h3>Tulum</h3>
+                <p>Tulum es una ciudad costera en la península de Yucatán, México. Es conocida por sus ruinas mayas bien conservadas, que se encuentran en un acantilado junto al mar Caribe. La playa de Tulum es una extensión de arena blanca y aguas turquesas que se extiende a lo largo de la costa.</p>
+                <a href="#">Reservar ahora</a>
+            </div>
+            <div class="card img-zoom bacalar" data-category="beach" data-type="relax">
+                <img src="./img/destinos/bacalar.jpg" alt="Bacalar">
+                <h3>Bacalar</h3>
+                <p>Bacalar es una ciudad en el estado mexicano de Quintana Roo. Es conocida por su laguna azul turquesa, que se extiende a lo largo de más de 40 km. La laguna está rodeada por manglares y bosques tropicales y es un destino popular para nadar, hacer kayak y practicar deportes acuáticos.</p>
+                <a href="#">Reservar ahora</a>
+            </div>
+            <div class="card img-zoom merida" data-category="culture" data-type="adventure">
+                <img src="./img/destinos/merida.jpg" alt="Mérida">
+                <h3>Mérida</h3>
+                <p>Mérida es la capital del estado mexicano de Yucatán. Es conocida por su arquitectura colonial española y sus numerosos sitios históricos, incluyendo la Catedral de Mérida y el Paseo Montejo, una avenida bordeada de mansiones coloniales. Mérida también es conocida por su gastronomía única, que combina influencias mayas e hispanas.</p>
+                <a href="#">Reservar ahora</a>
+            </div>
+            <div class="card img-zoom valladolid" data-category="culture" data-type="relax">
+                <img src="./img/destinos/valladolid.jpg" alt="Valladolid">
+                <h3>Valladolid</h3>
+                <p>Valladolid es una ciudad colonial en el estado mexicano de Yucatán. Es conocida por su arquitectura colonial española bien conservada y sus numerosos sitios históricos, incluyendo la Catedral de San Servacio y el Convento de San Bernardino de Siena. Valladolid también es un punto de partida popular para explorar las cercanas ruinas mayas de Chichén Itzá.</p>
+                <a href="#">Reservar ahora</a>
+            </div>
+        </div>
+    </div>
+
+  
+<div>
+<button onclick="showAllDestinations()">Mostrar Todos</button>
+</div>  
+ 
+    <!-- Sección de reseñas -->
+    <div class="reseñas">
+        <h2>Reseñas de Clientes</h2>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Comentario</th>
+            </tr>
+            <tr>
+                <td>Cliente 1</td>
+                <td>Buen servicio y personal amable.</td>
+            </tr>
+            <tr>
+                <td>Cliente 2</td>
+                <td>Excelente experiencia de viaje.</td>
+            </tr>
+            <!-- Agregar más reseñas según sea necesario -->
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2023 Transporte RP | Síguenos en [Facebook] y [Twitter]
+    </div>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
+
